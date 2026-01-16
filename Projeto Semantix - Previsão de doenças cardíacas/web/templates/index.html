@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heartly - Previsão de Doenças Cardíacas</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/styles.css">
+    <link rel="icon" href="/static/imagens/logo_footer.png">
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-content">
+            <div class="logo-container">
+                <div class="logo-icon">
+                    <img src="/static/imagens/logo.png" alt="Heartly Logo" />
+                </div>
+                <h1 class="logo-text">Heartly</h1>
+            </div>
+            <h2 class="hero-title">Prevenção, saúde, qualidade de vida</h2>
+            <p class="hero-description">Previsões precisas feitas por IA para auxiliar pacientes e profissionais na área de saúde a conseguir diagnósticos precoces para previnir doenças</p>
+            <div class="hero-buttons">
+                <button class="btn-primary" onclick="scrollToSection('single-process')">Fazer análise</button>
+                <button class="btn-secondary" onclick="scrollToSection('about-me')">Sobre o desenvolvedor</button>
+            </div>
+            <p class="disclaimer">O Hearthly não substitui um diagnóstico feito por um profissional da saúde, lembre-se de sempre consultar um médico</p>
+        </div>
+        <div class="hero-illustration">
+            <div class="illustration-bg-1"></div>
+            <div class="illustration-bg-2"></div>
+            <div class="illustration-main">
+                <img src="/static/imagens/medical_illustration.png" alt="Medical illustration" />
+            </div>
+        </div>
+    </section>
+
+    <!-- Single Process AI Section -->
+    <section class="single-process-section" id="single-process">
+        <h2 class="section-title">Previsão de risco de doença cardíaca</h2>
+        <p class="section-subtitle">Preencha os campos com as informações médicas para obter a análise de risco do Hearthly</p>
+        
+        <div class="form-container">
+            <div class="form-panel">
+                <h3 class="panel-title">Informações do Paciente</h3>
+                <form id="patient-form" class="patient-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Idade</label>
+                            <input type="number" id="age" placeholder="Coloque sua idade" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Freq. cardíaca máxima</label>
+                            <input type="number" id="max-heart-rate" placeholder="p. ex., 180" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Sexo</label>
+                            <select id="sex" required>
+                                <option value="">Selecione seu Sexo</option>
+                                <option value="M">Masculino</option>
+                                <option value="F">Feminino</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Colesterol</label>
+                            <input type="number" id="cholesterol" placeholder="p. ex., 170" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Tipo de dor peitoral</label>
+                            <select id="chest-pain" required>
+                                <option value="">Selecione uma opção</option>
+                                <option value="ATA">ATA</option>
+                                <option value="NAP">NAP</option>
+                                <option value="ASY">ASY</option>
+                                <option value="TA">TA</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Angina de esforço</label>
+                            <select id="exercise-angina" required>
+                                <option value="">Selecione uma opção</option>
+                                <option value="Y">Sim</option>
+                                <option value="N">Não</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Declive de ST</label>
+                            <select id="st-slope" required>
+                                <option value="">Up/Flat/Down</option>
+                                <option value="Up">Up</option>
+                                <option value="Flat">Flat</option>
+                                <option value="Down">Down</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Depressão de ST</label>
+                            <input type="number" step="0.1" id="st-depression" placeholder="p. ex., 1,5" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Glicose em jejum</label>
+                            <select id="fasting-glucose" required>
+                                <option value="">Selecione uma opção</option>
+                                <option value="Y">Sim</option>
+                                <option value="N">Não</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn-analyze">Analisar Risco</button>
+                </form>
+            </div>
+            
+            <div class="results-panel">
+                <h3 class="panel-title">Resultados da análise da IA</h3>
+                <div class="results-content" id="results-content">
+                    <div class="analysis-icon">
+                        <img src="/static/imagens/analysis_icon.png" alt="Analysis icon" />
+                    </div>
+                    <p class="results-placeholder">Preencha o formulário e pressione o botão para receber a análise</p>
+                </div>
+            </div>
+        </div>
+        <p class="disclaimer">O Hearthly não substitui um diagnóstico feito por um profissional da saúde, lembre-se de sempre consultar um médico</p>
+    </section>
+
+    <!-- Batch Processing Section -->
+    <section class="batch-process-section" id="batch-process">
+        <h2 class="section-title">Processamento em Lote de Pacientes</h2>
+        
+        <div class="form-container">
+            <div class="form-panel">
+                <h3 class="panel-title">Importe dados de pacientes</h3>
+                <p class="panel-description">Adicione um csv com as métricas dos pacientes (Idade, Colesterol, Sexo, Freq. Cardíaca)</p>
+                
+                <div class="upload-container" id="upload-container">
+                    <div class="upload-area" id="upload-area">
+                        <div class="upload-icon">
+                            <svg width="51" height="51" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                <polyline points="17 8 12 3 7 8"></polyline>
+                                <line x1="12" y1="3" x2="12" y2="15"></line>
+                            </svg>
+                        </div>
+                        <p>Clique para fazer importar o arquivo CSV</p>
+                    </div>
+                    <input type="file" id="csv-file" accept=".csv" style="display: none;">
+                </div>
+                
+                <button class="btn-process" id="process-btn">Processar pacientes</button>
+                <button class="btn-download" id="download-example">Baixar CSV de Exemplo</button>
+                
+                <div class="divider"></div>
+                
+                <h4 class="columns-title">Colunas Necessárias no Arquivo</h4>
+                <ul class="columns-list">
+                    <li>Idade (Num)</li>
+                    <li>Sexo (M/F)</li>
+                    <li>Tipo de dor peitoral (ATA/NAP/ASY/TA)</li>
+                    <li>Declive de ST (Up/Flat/Down)</li>
+                    <li>Glicose em Jejum (Y/N)</li>
+                    <li>Freq. cardíaca máxima (Num)</li>
+                    <li>Colesterol (Num)</li>
+                    <li>Angina de esforço (Y/N)</li>
+                    <li>Depressão de ST (Num)</li>
+                </ul>
+            </div>
+            
+            <div class="results-panel">
+                <h3 class="panel-title">Resultados da análise da IA</h3>
+                <div class="results-content" id="batch-results-content">
+                    <div class="analysis-icon">
+                        <img src="/static/imagens/analysis_icon.png" alt="Analysis icon" />
+                    </div>
+                    <p class="results-placeholder">Preencha o formulário e pressione o botão para receber a análise</p>
+                </div>
+                <!-- Results Table Component -->
+                <div class="results-table-container" id="results-table-container" style="display: none;">
+                    <div class="results-table-wrapper">
+                        <table class="results-table" id="results-table">
+                            <thead>
+                                <tr class="table-header">
+                                    <th>Idade</th>
+                                    <th>Sexo</th>
+                                    <th>Tipo de dor peitoral</th>
+                                    <th>Colesterol</th>
+                                    <th>Freq. cardíaca máxima</th>
+                                    <th>Angina de esforço</th>
+                                    <th>Risco</th>
+                                </tr>
+                            </thead>
+                            <tbody id="results-table-body">
+                                <!-- Table rows will be inserted here -->
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="results-table-footer">
+                        <button class="btn-download-csv" id="download-results-csv">Baixar CSV</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <p class="disclaimer">O Hearthly não substitui um diagnóstico feito por um profissional da saúde, lembre-se de sempre consultar um médico</p>
+    </section>
+
+    <!-- Metrics Section -->
+    <section class="metrics-section">
+        <h2 class="section-title">Métricas de performance</h2>
+        <p class="section-subtitle">Métricas importantes que demonstram a performance do modelo de IA</p>
+        
+        <div class="metrics-container">
+            <div class="metric-card metric-card-1">
+                <h3>Acurácia</h3>
+                <p class="metric-value">88%</p>
+            </div>
+            <div class="metric-card metric-card-2">
+                <h3>F1 Score</h3>
+                <p class="metric-value">0,9</p>
+            </div>
+            <div class="metric-card metric-card-3">
+                <h3>ROC AUC</h3>
+                <p class="metric-value">0,93</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Me Section -->
+    <section class="about-section" id="about-me">
+        <h2 class="section-title">Sobre o Criador do Projeto</h2>
+        
+        <div class="about-container">
+            <div class="about-content">
+                <h3 class="creator-name">Sergio Augusto - Cientista de Dados</h3>
+                <div class="creator-text">
+                    <p>Sou um desenvolvedor orientado por dados e apaixonado por aplicar inteligência artificial para enfrentar desafios reais na área da saúde. Com experiência em machine learning, engenharia de atributos e modelagem preditiva, desenvolvi o Heartly, um sistema baseado em stacking projetado para prever doenças cardíacas com maior precisão e confiabilidade.</p>
+                    <p>&nbsp;</p>
+                    <p>Este projeto reflete meu compromisso em transformar dados em diagnósticos mais acessíveis, claros e úteis, unindo rigor técnico, análise crítica e boas práticas de ciência de dados.</p>
+                    <p>&nbsp;</p>
+                    <p>O Heartly é a materialização do meu conhecimento em modelos avançados, pipelines completos e validação robusta, oferecendo uma solução que apoia profissionais da saúde e pacientes por meio de insights preditivos de alto impacto.</p>
+                </div>
+                <h4 class="connect-title">Conecte-se comigo:</h4>
+                <div class="social-buttons">
+                    <a href="https://www.linkedin.com/in/sergio-augusto-soares/" class="social-btn social-linkedin">LinkedIn</a>
+                    <a href="https://github.com/avgussto" class="social-btn social-github">Github</a>
+                    <a href="#" class="social-btn social-email">Email</a>
+                </div>
+            </div>
+            <div class="creator-image">
+                <img src="/static/imagens/sergio_augusto.png" alt="Sergio Augusto" />
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-logo">
+                <div class="footer-logo-icon">
+                    <img src="/static/imagens/logo_footer.png" alt="Heartly Logo" />
+                </div>
+                <p class="footer-logo-text">Hearthly</p>
+            </div>
+            <p class="footer-description">Previsões de doenças cardíacas precisas feitas por IA com o intuíto de auxilar profissionais da area da medicina</p>
+            
+            <div class="footer-divider"></div>
+            
+            <p class="footer-warning-title">Aviso:</p>
+            <p class="footer-warning">Heartly é um projeto acadêmico e de maneira alguma substitui um diagnóstico feito por um profissioal da saúde, faça checagens regulares e se sentir que algo está errado, procure um médico.</p>
+            
+            <div class="footer-contact">
+                <h4>Contato</h4>
+                <div class="footer-social">
+                    <a href="#" class="footer-social-btn">
+                        <span>LinkedIn</span>
+                    </a>
+                    <a href="#" class="footer-social-btn">
+                        <span>Github</span>
+                    </a>
+                    <a href="#" class="footer-social-btn">
+                        <span>Email</span>
+                    </a>
+                    <a href="#" class="footer-social-btn">
+                        <span>(+55) 11 99519-2717</span>
+                    </a>
+                </div>
+            </div>
+            
+            <p class="footer-copyright">© 2025 Heartly. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="/static/script.js"></script>
+</body>
+</html>
