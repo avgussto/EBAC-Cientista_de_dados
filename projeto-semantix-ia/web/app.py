@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify, send_file
+from flask import Flask, request, jsonify, send_file, render_template
 from flask_cors import CORS
 import joblib
 import pandas as pd
@@ -27,12 +27,19 @@ class OrdinalMapper(BaseEstimator, TransformerMixin):
 app = Flask(__name__)
 CORS(app)
 
+import __main__
+__main__.OrdinalMapper = OrdinalMapper
+
 try:
     model = joblib.load('modelo_final_previsao_cardiaca.joblib')
     print("Model loaded successfully!")
 except Exception as e:
     print(f"Error loading model: {e}")
     model = None
+
+@app.route('/')
+def home():
+    return render_template('index.html')
 
 EXPECTED_COLUMNS_ORDER = [
     'Age', 'Sex', 'ChestPainType', 'Cholesterol', 
@@ -45,9 +52,7 @@ CATEGORICAL_COLS = ['Sex', 'ChestPainType', 'ExerciseAngina', 'ST_Slope']
 NUMERIC_COLS = ['Age', 'Cholesterol', 'FastingBS', 'MaxHR', 'Oldpeak']
 # -------------------------------------------------------------
 
-def preprocess_data(data):
-    """ Preprocess the input data to match the model's expected format (strings for categories). """
-    
+def preprocess_data(data):   
     if isinstance(data, dict):
         df = pd.DataFrame([data])
     elif isinstance(data, list):
