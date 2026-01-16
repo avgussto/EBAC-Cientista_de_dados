@@ -5,5 +5,5 @@ numpy
 scikit-learn==1.6.1
 joblib
 gunicorn
-xgboost
-catboost
+xgboost==3.1.2
+catboost==1.2.8
