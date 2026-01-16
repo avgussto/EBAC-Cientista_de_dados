@@ -114,13 +114,13 @@ function predictPatient(formData, resultsContainer) {
     // Show loading state
     resultsContainer.innerHTML = `
         <div class="analysis-icon">
-            <img src="https://www.figma.com/api/mcp/asset/9982a69a-3053-43d5-b4bb-9555e53d3cba" alt="Analysis icon" />
+            <img src="/static/imagens/analysis_icon.png" alt="Analysis icon" />
         </div>
         <p class="results-placeholder">Analisando dados...</p>
     `;
     
     // Call Flask API
-    fetch('http://localhost:5000/predict', {
+    fetch('/predict', {  
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -181,9 +181,12 @@ function processBatchCSV(file, resultsContainer) {
     formData.append('file', file);
     
     // Call Flask API
-    fetch('http://localhost:5000/predict-batch', {
-        method: 'POST',
-        body: formData
+    fetch('/predict', {  
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(formData)
     })
     .then(response => response.json())
     .then(data => {
