@@ -1,4 +1,4 @@
-# Hearthly - Healthcare Analytics: Predição de Risco Cardíaco com Stacking de IA
+# Heartly - Healthcare Analytics: Predição de Risco Cardíaco com Stacking de IA
 
 #### Este projeto combina técnicas avançadas de Machine Learning (Stacking), Business Intelligence e um site com o modelo de IA em funcionamento para fornecer uma ferramenta de suporte à decisão clínica, identificando pacientes com alto risco de doenças cardiovasculares.
 
