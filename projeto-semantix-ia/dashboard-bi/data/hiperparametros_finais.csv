@@ -1,0 +1,12 @@
+Hiperparâmetro,Valor Otimizado
+model__catboost__depth,6
+model__catboost__learning_rate,0.011026475482749607
+model__catboost__n_estimators,409
+model__final_estimator__C,0.9474187023444992
+model__final_estimator__penalty,l2
+model__final_estimator__solver,liblinear
+model__rf__max_depth,7
+model__rf__n_estimators,257
+model__xgb__learning_rate,0.030862119085825042
+model__xgb__max_depth,5
+model__xgb__n_estimators,387

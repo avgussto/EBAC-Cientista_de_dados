@@ -1,36 +1,57 @@
-# Heartly - Sistema de Previsão de Doenças Cardíacas
+## 🫀 Heartly Web Interface
 
-Sistema web para previsão de risco de doenças cardíacas usando inteligência artificial.
+Esta é a camada de interface do projeto Previsão de Doenças Cardíacas, desenvolvida para tornar o modelo de Machine Learning acessível a usuários finais através de uma aplicação web moderna e responsiva.
 
-## Instalação
+Clique [aqui](https://heartly-y6hj.onrender.com) para acessar o site ou no link https://heartly-y6hj.onrender.com
 
-### 1. Instalar dependências Python
+## Tecnologias Utilizadas
+Backend: Flask (Python)
 
-```bash
+Frontend: HTML5, CSS3 e JavaScript 
+
+Servidor de Produção: Gunicorn
+
+Deploy: Render
+
+## Aquitetura da Solução
+A aplicação segue uma estrutura de SPA (Single Page Application):
+
+Coleta de Dados: O formulário captura parâmetros clínicos do usuário.
+
+Processamento Assíncrono: O JavaScript envia os dados via fetch (JSON) para evitar o recarregamento da página.
+
+Inferência em Tempo Real: O servidor Flask carrega o pipeline de Stacking (joblib) e processa a predição.
+
+Feedback Visual: A interface exibe o resultado instantaneamente com estilos dinâmicos (ex: cores diferentes para risco alto/baixo).
+
+## Estrutura de Pastas
+```
+web/
+├── static/              # Arquivos de estilo (CSS), imagens e lógica JS
+├── templates/           # Arquivos HTML (index.html)
+├── app.py               # Servidor Flask e carregamento da IA
+├── requirements.txt     # Dependências para o ambiente de produção
+├── modelo_final_previsao_cardiaca.joblib # Modelo para ser carregado
+├── Procfile             # Arquivo essencial para o deploy
+├── README.md            # Readme que você está lendo :)
+```
+
+## Como Executar Localmente
+Se quiser rodar esta interface na sua máquina:
+
+Certifique-se de ter o Python 3.11 instalado.
+
+Instale as dependências:
+```
 pip install -r requirements.txt
 ```
 
-### 2. Iniciar o servidor Flask
-
-```bash
+Inicie o servidor:
+```
 python app.py
 ```
 
-O servidor Flask estará rodando em `http://localhost:5000`
-
-### 3. Abrir a aplicação web
-
-Abra o arquivo `index.html` no seu navegador ou use um servidor local:
-
-```bash
-# Usando Python
-python -m http.server 8000
-
-# Ou usando Node.js
-npx http-server
-```
-
-Depois acesse `http://localhost:8000`
+Acesse http://localhost:8000 no seu navegador ou rode com o LiveServer no VS Code
 
 ## Funcionalidades
 
@@ -58,15 +79,6 @@ O arquivo CSV deve conter as seguintes colunas:
 - **Colesterol** (número)
 - **Angina de esforço** (Y/N)
 - **Depressão de ST** (número)
-
-## Estrutura do Projeto
-
-- `index.html` - Interface web
-- `styles.css` - Estilos CSS
-- `script.js` - Lógica JavaScript
-- `app.py` - Servidor Flask com API
-- `modelo_final_previsao_cardiaca.joblib` - Modelo de IA treinado
-- `requirements.txt` - Dependências Python
 
 ## API Endpoints
 
