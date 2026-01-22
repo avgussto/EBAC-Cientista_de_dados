@@ -32,8 +32,6 @@ A organização deste repositório é modular para facilitar a manutenção e au
 
 - /web: Código-fonte da interface web para consultas em tempo real.
 
-- /data: Datasets utilizados (originais e processados).
-
 ## A Inteligência Artificial
 Utilizei uma arquitetura de Stacking Ensemble, combinando o poder de três modelos distintos para reduzir o viés e a variância:
 
